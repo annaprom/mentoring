@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.LinkedList;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -11,15 +9,20 @@ public class Main {
         e1.setNext(e2);
         Element e3 = new Element(e2, "pretty", null);
         e2.setNext(e3);
-        addNewElement("7", 5, e1);
-        System.out.print(outputSortingFrom(e1));
+//        addNewElement("7", 5, e1);
+//        addNewElement("8", e1);
+        System.out.print(countQuantity(e1));
+//        System.out.print(outputSortingFrom(e1.getPrevious()));
 //        System.out.println(outputSortingFrom(e1));
     }
 
-    public static String outputSortingFrom(Element e) {
-        String res = "";
+    public static StringBuilder outputSortingFrom(Element e) {
+        StringBuilder res = new StringBuilder();
         while (e != null) {
-            res = res + " " + e.getValue();
+            res.append(e.getValue());
+            if (e.getNext()!=null){
+            res.append(" ");
+            }
             e = e.getNext();
         }
         return res;
@@ -43,6 +46,26 @@ public class Main {
             if (rememberNext != null) {
                 rememberNext.setPrevious(eNew);
             }
+        }
+    }
+
+    public static void addNewElement(String data, Element e) {
+            Element eNew = new Element(null, data, e);
+            e.setPrevious(eNew);
+//        addNewElement(data, 0, e);
+        }
+
+    public static int countQuantity(Element e) {
+        if(e==null){
+            return 0;
+        }
+        else {
+            int counter = 1;
+            while(e.getNext()!=null) {
+                e = e.getNext();
+                counter++;
+            }
+            return counter;
         }
     }
 }
