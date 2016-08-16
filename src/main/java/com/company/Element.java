@@ -11,6 +11,10 @@ public class Element {
         this.next = next;
     }
 
+    public Element(String value) {
+        this(null, value, null);
+    }
+
     public Element getPrevious() {
         return previous;
     }
