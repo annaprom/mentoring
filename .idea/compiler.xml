@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="mentoring" />
+        <module name="StandartList" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mentoring" target="1.5" />
+      <module name="StandartList" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

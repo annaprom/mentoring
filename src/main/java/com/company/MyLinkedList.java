@@ -61,41 +61,46 @@ public class MyLinkedList {
     }
 
     public int countQuantity() {
-        if (firstElement == null) {
+        Element current = firstElement;
+        if (current == null) {
             return 0;
         } else {
             int counter = 1;
-            while (firstElement.getNext() != null) {
-                firstElement = firstElement.getNext();
+            while (current.getNext() != null) {
+                current = current.getNext();
                 counter++;
             }
             return counter;
         }
     }
 
-    public void deleteElement(int position) {
-        if (firstElement != null) {
-            if (position == 0) {
-                firstElement.getNext().setPrevious(null);
-                firstElement = firstElement.getNext();
-            } else {
-                Element innerFirstElement = firstElement;
-                int counter = 0;
-                while (counter < position ) {
-                    counter++;
-                if(innerFirstElement.getNext() != null){
-                    innerFirstElement = innerFirstElement.getNext();}
-                else return;
+    public void deleteElement() {
+        if (firstElement != null && lastElement!=null) {
+                Element rememberNext = lastElement.getNext();
+                Element rememberPrevious = lastElement.getPrevious();
+                if (rememberPrevious != null) {
+                    lastElement.getPrevious().setNext(rememberNext);
                 }
-                Element rememberNext = innerFirstElement.getNext();
-                Element rememberPrevious = innerFirstElement.getPrevious();
-                if ((rememberNext==null && rememberPrevious!=null)){
-                    innerFirstElement.getPrevious().setNext(rememberNext);
-                if (rememberNext!=null ){
-                    innerFirstElement.getPrevious().setNext(rememberNext);
-                    innerFirstElement.getNext().setPrevious(rememberPrevious);}
+                if (rememberNext != null && rememberPrevious == null) {
+                    lastElement.getNext().setPrevious(rememberPrevious);
+                    firstElement = firstElement.getNext();
                 }
             }
         }
+
+    public void getElementByPosition(int position) {
+        int quantity = countQuantity();
+        int counter = 0;
+        if (quantity > position) {
+            Element current = firstElement;
+            while (counter < position) {
+                counter++;
+                if (current.getNext() != null) {
+                    current = current.getNext();
+                }
+            }
+            lastElement = current;
+        }
+        else lastElement = null;
     }
 }

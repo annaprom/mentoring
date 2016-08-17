@@ -79,32 +79,37 @@ public class MyLinkedListTest {
 
     @org.junit.Test
     public void deleteFirstElement() throws Exception {
-        list.deleteElement(0);
+        list.getElementByPosition(0);
+        list.deleteElement();
         Assert.assertEquals("are pretty", list.outputSortingFrom().toString());
     }
 
     @org.junit.Test
     public void deleteMiddleElement() throws Exception {
-        list.deleteElement(1);
+        list.getElementByPosition(1);
+        list.deleteElement();
         Assert.assertEquals("We pretty", list.outputSortingFrom().toString());
     }
 
     @org.junit.Test
     public void deleteLastElement() throws Exception {
-        list.deleteElement(2);
+        list.getElementByPosition(2);
+        list.deleteElement();
         Assert.assertEquals("We are", list.outputSortingFrom().toString());
     }
 
     @org.junit.Test
     public void deleteNotExistedElement() throws Exception {
-        list.deleteElement(8);
+        list.getElementByPosition(8);
+        list.deleteElement();
         Assert.assertEquals("We are pretty", list.outputSortingFrom().toString());
     }
 
     @org.junit.Test
     public void deleteFromEmptyList() throws Exception {
         MyLinkedList emptyList = new MyLinkedList();
-        emptyList.deleteElement(2);
+        list.getElementByPosition(2);
+        emptyList.deleteElement();
         Assert.assertEquals("", emptyList.outputSortingFrom().toString());
     }
 
