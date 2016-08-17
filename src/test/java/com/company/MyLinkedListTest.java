@@ -21,6 +21,7 @@ public class MyLinkedListTest {
     public void outputSortingFromTest() throws Exception {
         Assert.assertEquals("We are pretty", list.outputSortingFrom().toString());
     }
+
     @org.junit.Test
     public void outputTestForOneElement() throws Exception {
         MyLinkedList emptyList = new MyLinkedList();
